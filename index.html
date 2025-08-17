@@ -244,6 +244,19 @@
             background-color: var(--primary-color);
             border-radius: 5px;
         }
+
+        /* Default badge size */
+        .school-badge {
+            width: 50px;
+            height: 50px;
+            /* other existing styles... */
+        }
+        
+        /* Specific size for high school */
+        .highschool-badge {
+            width: 40px;  /* 10px smaller */
+            height: 40px;
+        }
         
         /* Projects Section */
         .projects {
@@ -620,7 +633,9 @@
                 <!-- High School -->
                 <div class="education-item">
                     <div class="education-header">
-                        <img src="images/highschool-logo.png" alt="High School Logo" class="school-badge">
+                        <img src="images/highschool-logo.png" alt="High School Logo" class="school-badge highschool-badge">
+
+                        
                         <div>
                             <h4>Northwood School</h4>
                             <p class="degree">National Senior Certificate</p>
