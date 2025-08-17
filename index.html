@@ -1,361 +1,301 @@
-<!doctype html>
-<html lang="en" data-theme="light">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sogen Moodley — E‑Portfolio</title>
-  <meta name="description" content="Engineering + research portfolio: projects, publications, workshops, and contact." />
-  <meta property="og:title" content="Sogen Moodley — E‑Portfolio" />
-  <meta property="og:description" content="Engineering + research portfolio: projects, publications, workshops, and contact." />
+  <title>KP • E‑Portfolio</title>
+  <meta name="description" content="E‑portfolio of KP — projects, research, experience, and contact." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%230ea5e9'/><text x='50' y='60' text-anchor='middle' font-size='58' font-family='Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif' fill='white'>K</text></svg>">
+  <meta property="og:title" content="KP • E‑Portfolio" />
+  <meta property="og:description" content="Projects, research, experience, and contact." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/og-image.png" />
-  <meta name="color-scheme" content="light dark" />
+  <meta property="og:image" content="" />
+  <meta property="og:url" content="https://your-github-username.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    /* ===== Base + Theme ===== */
     :root {
-      --bg: #ffffff;
-      --bg-alt: #f7f7f8;
-      --text: #0b0b0e;
-      --muted: #5b5b66;
-      --primary: #2563eb; /* blue-600 */
-      --primary-contrast: #ffffff;
-      --card: #ffffff;
-      --border: #e5e7eb;
-      --shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
-      --radius: 16px;
-    }
-    [data-theme="dark"] {
-      --bg: #0b0b0e;
-      --bg-alt: #111317;
+      --bg: #0b0c10;
+      --panel: rgba(255,255,255,0.04);
       --text: #e5e7eb;
-      --muted: #a1a1aa;
-      --primary: #60a5fa;
-      --primary-contrast: #0b0b0e;
-      --card: #16181d;
-      --border: #23262d;
-      --shadow: 0 10px 28px rgba(0,0,0,0.5);
+      --muted: #9ca3af;
+      --brand: #0ea5e9;
+      --brand-2: #22d3ee;
+      --ring: rgba(34,211,238,0.35);
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#fafafa; --panel:rgba(0,0,0,0.04); --text:#111827; --muted:#4b5563; --card:#ffffff; --border: rgba(0,0,0,0.08); --shadow: 0 10px 30px rgba(2,6,23,0.08);}  
     }
-    .container { width: min(1100px, 92%); margin-inline: auto; }
-    .sr-only {
-      position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
-    }
+    [data-theme="light"] { --bg:#fafafa; --panel:rgba(0,0,0,0.04); --text:#111827; --muted:#4b5563; --card:#ffffff; --border: rgba(0,0,0,0.08); --shadow: 0 10px 30px rgba(2,6,23,0.08); }
+    [data-theme="dark"]  { --bg:#0b0c10; --panel:rgba(255,255,255,0.04); --text:#e5e7eb; --muted:#9ca3af; --card:rgba(255,255,255,0.06); --border: rgba(255,255,255,0.12); --shadow: 0 10px 30px rgba(2,6,23,0.35); }
 
-    /* ===== Header / Nav ===== */
-    header.site {
-      position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(6px);
-      background: color-mix(in oklab, var(--bg), transparent 15%);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; }
-    .nav a.logo { font-weight: 800; letter-spacing: .2px; text-decoration: none; color: var(--text); }
-    .nav .links { display: flex; align-items: center; gap: .3rem; }
-    .nav .links a { text-decoration: none; color: var(--muted); padding: .45rem .7rem; border-radius: .7rem; }
-    .nav .links a:hover, .nav .links a:focus { color: var(--text); background: var(--bg-alt); outline: none; }
-    .icon-btn { background: transparent; border: 1px solid var(--border); border-radius: .7rem; padding: .5rem .6rem; cursor: pointer; display: inline-flex; align-items: center; gap: .5rem; color: var(--muted); }
-    .icon-btn:hover { border-color: var(--primary); color: var(--text); }
-    .mobile-toggle { display: none; }
-    @media (max-width: 840px) {
-      .nav .links { display: none; }
-      .nav.open .links { display: flex; flex-direction: column; position: absolute; left: 0; right: 0; top: 56px; background: var(--bg); border-bottom: 1px solid var(--border); padding: .5rem 1rem 1rem; }
-      .mobile-toggle { display: inline-flex; }
-    }
+    html, body { height: 100%; }
+    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    /* ===== Hero ===== */
-    .hero { padding: 3.2rem 0 2.2rem; }
-    .lead { font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; letter-spacing: -.3px; line-height: 1.2; margin: 0 0 .6rem; }
-    .sub { font-size: clamp(16px, 2vw, 20px); color: var(--muted); margin: .2rem 0 1.1rem; }
-    .badges { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .badge { background: var(--bg-alt); color: var(--muted); border: 1px solid var(--border); padding: .3rem .6rem; border-radius: 999px; font-size: .85rem; }
-    .cta { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
-    .btn { text-decoration: none; border: 1px solid var(--border); background: var(--card); color: var(--text); padding: .7rem .95rem; border-radius: .8rem; box-shadow: var(--shadow); }
-    .btn.primary { background: var(--primary); border-color: color-mix(in oklab, var(--primary), black 8%); color: var(--primary-contrast); }
+    /* --- Layout --- */
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .navbar { position: sticky; top: 0; backdrop-filter: saturate(180%) blur(14px); background: color-mix(in oklab, var(--bg) 75%, transparent); border-bottom: 1px solid var(--panel); z-index: 50; }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding: 14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight: 700; letter-spacing: 0.2px; }
+    .brand-badge { width:34px; height:34px; display:grid; place-items:center; border-radius:12px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:white; box-shadow: var(--shadow); font-weight:800; }
+    .nav-links { display:flex; gap: 18px; }
+    .nav-links a { color: var(--muted); text-decoration:none; font-weight:500; padding:8px 10px; border-radius:10px; }
+    .nav-links a:hover { background: var(--panel); color: var(--text); }
+    .toggle { border:1px solid var(--border); background: var(--card); border-radius: 12px; padding:8px 10px; display:flex; align-items:center; gap:8px; cursor:pointer; }
 
-    /* ===== Sections ===== */
-    .section { padding: 2.3rem 0 1.6rem; border-top: 1px solid var(--border); }
-    .section h2 { font-size: 1.6rem; margin: 0 0 1rem; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); }
-    .muted { color: var(--muted); }
+    header.hero { padding: 72px 0 32px; display:grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items:center; }
+    @media (max-width: 880px){ header.hero { grid-template-columns: 1fr; padding: 56px 0 8px; } }
+    .kicker { display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; background: var(--panel); color: var(--muted); font-size: 13px; font-weight:600; letter-spacing: .3px; }
+    .headline { font-size: clamp(32px, 5vw, 56px); line-height:1.05; margin: 14px 0; font-weight: 900; letter-spacing:-0.02em; }
+    .sub { color: var(--muted); font-size: clamp(16px, 2.2vw, 18px); }
+    .cta { margin-top: 22px; display:flex; flex-wrap:wrap; gap:12px; }
+    .btn { display:inline-flex; align-items:center; gap:10px; border-radius: 12px; padding: 12px 16px; text-decoration:none; font-weight:700; border:1px solid var(--border); background: var(--card); color: var(--text); box-shadow: var(--shadow); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border-color: transparent; color:white; }
+    .btn:hover { transform: translateY(-1px); transition: transform .15s ease; }
 
-    /* ===== Projects ===== */
-    .project-card { grid-column: span 6; display: flex; flex-direction: column; gap: .8rem; }
-    .project-card .thumb { aspect-ratio: 16 / 9; background: var(--bg-alt); border: 1px dashed var(--border); border-radius: .8rem; display: grid; place-items: center; font-size: .9rem; color: var(--muted); }
-    .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .tag { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: .2rem .5rem; border-radius: 999px; font-size: .8rem; }
-    @media (max-width: 840px) { .project-card { grid-column: 1 / -1; } }
+    .panel { border:1px solid var(--border); background: var(--card); border-radius: 16px; padding: 18px; }
+    .badge-row { display:flex; gap:12px; flex-wrap:wrap; }
+    .badge { padding:8px 12px; border-radius: 999px; border:1px solid var(--border); background: color-mix(in oklab, var(--card) 70%, transparent); font-weight:600; font-size: 13px; }
 
-    /* ===== Timeline (Experience/Teaching) ===== */
-    .timeline { border-left: 2px solid var(--border); padding-left: 1rem; display: flex; flex-direction: column; gap: 1rem; }
-    .tl-item { position: relative; padding-left: .2rem; }
-    .tl-item::before { content: ""; position: absolute; left: -1.23rem; top: .35rem; width: .6rem; height: .6rem; background: var(--primary); border-radius: 50%; }
+    section { padding: 28px 0 8px; }
+    .section-title { display:flex; align-items:center; justify-content:space-between; margin: 18px 0 12px; }
+    .section-title h2 { font-size: 22px; margin:0; letter-spacing:.3px; }
+    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
+    @media (max-width: 880px){ .grid { grid-template-columns: 1fr; } }
 
-    /* ===== Publications ===== */
-    .pub { padding: .6rem; border-left: 3px solid var(--border); }
+    .card { border:1px solid var(--border); background: var(--card); border-radius: 18px; overflow: clip; box-shadow: var(--shadow); display:flex; flex-direction:column; }
+    .thumb { aspect-ratio: 16/9; background: linear-gradient(120deg, color-mix(in oklab, var(--brand) 60%, transparent), color-mix(in oklab, var(--brand-2) 50%, transparent)); display:grid; place-items:center; }
+    .thumb span { font-weight:800; font-size: 20px; color: white; text-shadow: 0 2px 8px rgba(0,0,0,.25); }
+    .card-body { padding:16px; display:flex; flex-direction:column; gap:10px; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { font-size:12px; padding:6px 10px; border-radius:999px; background: var(--panel); color: var(--muted); border:1px dashed var(--border); }
+    .card a.inline { margin-top:auto; align-self:flex-start; text-decoration:none; font-weight:700; border-bottom: 2px solid color-mix(in oklab, var(--brand) 60%, transparent); }
 
-    /* ===== Footer ===== */
-    footer { border-top: 1px solid var(--border); padding: 1.2rem 0; color: var(--muted); }
-    .small { font-size: .92rem; color: var(--muted); }
+    /* Timeline */
+    .timeline { position: relative; padding-left: 18px; }
+    .timeline::before { content: ""; position:absolute; left: 8px; top:6px; bottom:6px; width:2px; background: linear-gradient(var(--brand), var(--brand-2)); border-radius:2px; }
+    .t-item { position:relative; padding: 8px 0 16px 16px; }
+    .t-item::before { content:""; position:absolute; left:-2px; top:12px; width:12px; height:12px; border: 2px solid white; background: linear-gradient(135deg, var(--brand), var(--brand-2)); border-radius:999px; box-shadow: var(--shadow); }
+    .t-role { font-weight:800; }
+    .t-meta { color: var(--muted); font-size: 14px; }
 
-    /* ===== Utility ===== */
-    kbd { background: var(--bg-alt); border: 1px solid var(--border); border-bottom-width: 2px; border-radius: .4rem; padding: .12rem .35rem; }
+    /* Footer */
+    footer { padding: 36px 0 64px; color: var(--muted); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .social { display:flex; gap:10px; }
+    .icon { width:22px; height:22px; display:inline-block; }
+
+    /* Accessibility helpers */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    /* Small flourishes */
+    .ring { box-shadow: 0 0 0 6px var(--ring); }
   </style>
+  <script>
+    // Theme: respect user preference, allow toggle, persist in localStorage
+    const applyTheme = (t) => { document.documentElement.setAttribute('data-theme', t); }
+    const stored = localStorage.getItem('theme');
+    const sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(stored || (sysDark ? 'dark' : 'light'));
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme')||'light';
+        const next = cur === 'light' ? 'dark' : 'light';
+        applyTheme(next); localStorage.setItem('theme', next);
+      });
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "KP",
+    "jobTitle": "Electrical & Computer Engineering Student",
+    "url": "https://your-github-username.github.io/",
+    "sameAs": [
+      "https://github.com/your-github-username",
+      "https://www.linkedin.com/in/your-handle"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <header class="site">
-    <div class="container nav" id="nav">
-      <a class="logo" href="#top" aria-label="Home">SM</a>
-      <nav class="links" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
-        <a href="#teaching">Workshops</a>
-        <a href="#cv">CV</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="actions">
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="1.6"/></svg>
+  <!-- Nav -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-badge" aria-hidden="true">K</span>
+        <span>KP • E‑Portfolio</span>
+      </a>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="nav-links" role="navigation" aria-label="Primary">
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button id="themeToggle" class="toggle" aria-label="Toggle theme" title="Toggle light/dark">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v1m0 16v1M4.22 4.22l.7.7m14.16 14.16l.7.7M1 12h1m20 0h1M4.22 19.78l.7-.7m14.16-14.16l.7-.7"/><circle cx="12" cy="12" r="4"/></svg>
         </button>
-        <button class="icon-btn mobile-toggle" id="menuToggle" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <main id="top">
-    <section class="hero container" id="about">
-      <h1 class="lead">Sogen Moodley</h1>
-      <p class="sub">Electrical & Computer Engineering • ML & Embedded Systems • Community Resilience & Urban Governance</p>
-      <div class="badges">
-        <span class="badge">Honours Candidate</span>
-        <span class="badge">Open‑source</span>
-        <span class="badge">Facilitator</span>
-      </div>
-      <div class="cta">
-        <a class="btn primary" href="#projects">Explore Projects</a>
-        <a class="btn" href="#cv">View CV</a>
-        <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-        <!-- Replace the GitHub link above with your actual profile URL -->
-      </div>
-    </section>
-
-    <section class="section container" id="skills">
-      <h2>Skills</h2>
-      <div class="grid">
-        <div class="card" style="grid-column: span 6;">
-          <h3>Technical</h3>
-          <p class="muted">Python, PyTorch, C/C++, MATLAB, Arduino/ESP32, Raspberry Pi, Linux, Git, HTML/CSS/JS.</p>
-          <div class="tags">
-            <span class="tag">Time‑series ML</span>
-            <span class="tag">1D CNN / LSTM</span>
-            <span class="tag">Computer Vision</span>
-            <span class="tag">Embedded</span>
-            <span class="tag">Signal Processing</span>
-          </div>
-        </div>
-        <div class="card" style="grid-column: span 6;">
-          <h3>Impact</h3>
-          <p class="muted">Workshop facilitation, disaster preparedness training, research communication, stakeholder engagement.</p>
-          <div class="tags">
-            <span class="tag">Inclusive design</span>
-            <span class="tag">Community research</span>
-            <span class="tag">Curriculum design</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <!-- Project 1 -->
-        <article class="card project-card">
-          <div class="thumb">Add a 16:9 image → <code>assets/images/birdfeeder.jpg</code></div>
-          <h3>Smart Bird Feeder with On‑device Species ID</h3>
-          <p class="muted">Low‑cost embedded system with hidden camera and ML to identify local bird species. Edge inference on microcontroller/Single‑Board Computer; energy‑aware capture pipeline.</p>
-          <div class="tags">
-            <span class="tag">ESP32 / Pi</span>
-            <span class="tag">CNN</span>
-            <span class="tag">OpenCV</span>
-          </div>
-          <div class="cta">
-            <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
-          </div>
-        </article>
-        <!-- Project 2 -->
-        <article class="card project-card">
-          <div class="thumb">Image → <code>assets/images/har-cnn.jpg</code></div>
-          <h3>Human Activity Recognition (HAR) 1D‑CNN</h3>
-          <p class="muted">PyTorch model on MotionSense dataset with robust preprocessing, augmentation, and reproducible training pipeline. Converted LSTM baseline to 1D‑CNN.</p>
-          <div class="tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">Time‑series</span>
-            <span class="tag">Signal Processing</span>
-          </div>
-          <div class="cta">
-            <a class="btn" href="#" target="_blank" rel="noopener">Paper/Report</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
-          </div>
-        </article>
-        <!-- Project 3 -->
-        <article class="card project-card">
-          <div class="thumb">Image → <code>assets/images/disaster-training.jpg</code></div>
-          <h3>Disaster Preparedness Workshops</h3>
-          <p class="muted">Co‑designed training for vulnerable communities on flood readiness and response. Materials include printable handouts and slide decks.</p>
-          <div class="tags">
-            <span class="tag">Community</span>
-            <span class="tag">Training</span>
-            <span class="tag">Resilience</span>
-          </div>
-          <div class="cta">
-            <a class="btn" href="#" target="_blank" rel="noopener">Materials</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Summary</a>
-          </div>
-        </article>
-        <!-- Project 4 (example) -->
-        <article class="card project-card">
-          <div class="thumb">Image → <code>assets/images/romcom.jpg</code></div>
-          <h3>Screenwriting: Family Comedy/Rom‑com</h3>
-          <p class="muted">Structured beats, character arcs, and sample scenes for a South African family comedy with multicultural themes.</p>
-          <div class="tags">
-            <span class="tag">Story</span>
-            <span class="tag">Comedy</span>
-            <span class="tag">South Africa</span>
-          </div>
-          <div class="cta">
-            <a class="btn" href="#" target="_blank" rel="noopener">Treatment</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Sample</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section container" id="publications">
-      <h2>Publications & Writing</h2>
-      <div class="list">
-        <div class="card pub">
-          <strong>Article/Report Title.</strong> <span class="muted">Journal/Outlet, Year.</span>
-          <div class="tags" style="margin-top:.4rem;">
-            <span class="tag">Policy</span><span class="tag">Resilience</span>
-          </div>
-          <div class="cta" style="margin-top:.6rem;">
-            <a class="btn" href="#" target="_blank" rel="noopener">Read</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">BibTex</a>
-          </div>
-        </div>
-        <div class="card pub">
-          <strong>Blog/Op‑ed: Apartheid Was Not Just Political — It Was Rooted in Religion.</strong> <span class="muted">2025.</span>
-          <div class="cta" style="margin-top:.6rem;">
-            <a class="btn" href="#" target="_blank" rel="noopener">Read</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="teaching">
-      <h2>Workshops & Teaching</h2>
-      <div class="timeline">
-        <div class="tl-item">
-          <h3>How to Facilitate Workshops</h3>
-          <p class="muted">Designing inclusive sessions, equal participation, power dynamics, and practical tools.</p>
-        </div>
-        <div class="tl-item">
-          <h3>Conflict Styles & Equanimity</h3>
-          <p class="muted">Training program on conflict styles, time management, and self‑discipline for young adults.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="cv">
-      <h2>CV</h2>
-      <div class="card">
-        <p class="muted">Download a one‑page PDF CV and a longer academic CV. Replace the file paths below with your actual files.</p>
+  <!-- Hero -->
+  <main id="top" class="container">
+    <header class="hero">
+      <div>
+        <span class="kicker">Hello — I’m KP</span>
+        <h1 class="headline">Electrical & Computer Engineering student building thoughtful systems and clean interfaces.</h1>
+        <p class="sub">I enjoy end‑to‑end design: sensing, embedded software, and ML—wrapped in usable, elegant UIs. Currently working on a portable bird‑feeding and species ID system, plus PyQt tooling and control systems.</p>
         <div class="cta">
-          <a class="btn primary" href="assets/CV.pdf" target="_blank" rel="noopener">Download 1‑page CV</a>
-          <a class="btn" href="assets/Academic-CV.pdf" target="_blank" rel="noopener">Download Academic CV</a>
-          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="./KP_Resume.pdf" download>Download Résumé</a>
+          <a class="btn" href="https://github.com/your-github-username" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="badge-row">
+          <span class="badge">PyQt5</span>
+          <span class="badge">STM32 • C</span>
+          <span class="badge">Raspberry Pi</span>
+          <span class="badge">Python • PyTorch</span>
+          <span class="badge">Control • Simulink</span>
+          <span class="badge">Onshape • 3D Print</span>
+        </div>
+        <div style="margin-top:14px; font-size:14px; color:var(--muted)">Open to opportunities in embedded ML, systems, and developer tools.</div>
+      </div>
+    </header>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="section-title">
+        <h2>Selected Projects</h2>
+        <a class="btn" href="https://github.com/your-github-username?tab=repositories" target="_blank" rel="noreferrer">All Repos →</a>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb"><span>BirdFeeder • CV</span></div>
+          <div class="card-body">
+            <h3>Portable Bird‑Feeding & Species ID System</h3>
+            <p>Hidden‑camera feeder with low‑cost embedded compute for on‑device species classification, motion‑triggered capture, and cloud archiving. 3D‑printed enclosure.</p>
+            <div class="tags">
+              <span class="tag">Raspberry Pi</span>
+              <span class="tag">Python</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">3D Printing</span>
+            </div>
+            <a class="inline" href="#" target="_blank" rel="noreferrer">Case study</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><span>PyQt • App</span></div>
+          <div class="card-body">
+            <h3>CODY: Remote Pulse Oximeter Dashboard</h3>
+            <p>PyQt5 GUI with live tracking, Google Maps integration, and history filtering. Designed for clarity and quick triage.</p>
+            <div class="tags">
+              <span class="tag">PyQt5</span>
+              <span class="tag">Google Sheets API</span>
+              <span class="tag">Maps</span>
+            </div>
+            <a class="inline" href="#" target="_blank" rel="noreferrer">Repository</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><span>ML • 1D CNN</span></div>
+          <div class="card-body">
+            <h3>MotionSense Activity Classifier</h3>
+            <p>1D CNN in PyTorch to classify human activities from smartphone IMU data, optimized for deployment on embedded hardware.</p>
+            <div class="tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">Signal Processing</span>
+              <span class="tag">Edge ML</span>
+            </div>
+            <a class="inline" href="#" target="_blank" rel="noreferrer">Paper / Repo</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="section-title"><h2>Experience & Highlights</h2></div>
+      <div class="panel timeline">
+        <div class="t-item">
+          <div class="t-role">Tutor • Computer Science Course</div>
+          <div class="t-meta">University • 2024</div>
+          <p>Supported student learning, created resources, and facilitated practical sessions. Focus on clear explanations and debugging strategies.</p>
+        </div>
+        <div class="t-item">
+          <div class="t-role">Control Systems Lab</div>
+          <div class="t-meta">High‑gain speed loop & PI position loop • 2024</div>
+          <p>Designed and validated controllers in Simulink across plant conditions; emphasis on robustness and step‑response performance.</p>
+        </div>
+        <div class="t-item">
+          <div class="t-role">IR Sensor Capture Pipeline</div>
+          <div class="t-meta">STM32L476 • 2024</div>
+          <p>Analog front‑end, sampling & email pipeline to a front‑end system; attention to noise, sampling rates, and power.</p>
         </div>
       </div>
     </section>
 
-    <section class="section container" id="contact">
-      <h2>Contact</h2>
+    <!-- Skills -->
+    <section id="skills">
+      <div class="section-title"><h2>Skills</h2></div>
       <div class="grid">
-        <div class="card" style="grid-column: span 6;">
-          <h3>Email</h3>
-          <p><a href="mailto:your.name@email.com">your.name@email.com</a> · Cape Town, South Africa</p>
-          <p class="small">Tip: You can replace the mailto link above. For a contact form on GitHub Pages, consider services like Formspree or Netlify Forms.</p>
+        <div class="panel">
+          <h3>Embedded & Systems</h3>
+          <p>STM32 (HAL), Raspberry Pi, C/C++, Python, UART/I2C/SPI, PCB basics, power budgeting.</p>
         </div>
-        <div class="card" style="grid-column: span 6;">
-          <h3>Social</h3>
-          <p>
-            <a class="btn" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
-            <a class="btn" href="#" target="_blank" rel="noopener" aria-label="Google Scholar">Scholar</a>
-            <a class="btn" href="https://x.com/" target="_blank" rel="noopener" aria-label="Twitter/X">X</a>
-          </p>
+        <div class="panel">
+          <h3>ML & Signal</h3>
+          <p>PyTorch, 1D CNNs, classical DSP, FIR/IIR, Parks–McClellan notch filters, feature engineering.</p>
+        </div>
+        <div class="panel">
+          <h3>Tools & UX</h3>
+          <p>PyQt5, Git/GitHub, Onshape, Figma basics, accessible & clean UI patterns.</p>
         </div>
       </div>
     </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-title"><h2>Contact</h2></div>
+      <div class="panel" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <p style="margin:0">Interested in collaborating or chatting? Reach out and I’ll get back to you.</p>
+        <div style="display:flex; gap:10px;">
+          <a class="btn primary" href="mailto:you@example.com">Email Me</a>
+          <a class="btn" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container">
+      <div>© <span id="year"></span> KP. Built with semantic HTML & a sprinkle of JS.</div>
+      <div class="social" aria-label="Social links">
+        <a href="https://github.com/your-github-username" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.1-.76.08-.74.08-.74 1.22.08 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.79.42-1.31.77-1.61-2.67-.31-5.47-1.34-5.47-5.96 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.57.12-3.27 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.7.24 2.96.12 3.27.77.84 1.24 1.9 1.24 3.22 0 4.63-2.8 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.83.58A12 12 0 0 0 12 .5Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4zM8 8h3.8v2.2h.05c.53-1 1.84-2.2 3.79-2.2 4.05 0 4.79 2.66 4.79 6.12V24h-4v-7.1c0-1.69-.03-3.86-2.35-3.86-2.35 0-2.71 1.83-2.71 3.73V24H8z"/></svg>
+        </a>
+        <a href="mailto:you@example.com" aria-label="Email">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z"/></svg>
+        </a>
+      </div>
+    </footer>
   </main>
 
-  <footer>
-    <div class="container small">
-      <p>© <span id="year"></span> Sogen Moodley • Built with plain HTML/CSS/JS • Hosted on GitHub Pages</p>
-    </div>
-  </footer>
-
   <script>
-    // ===== Theme Toggle (with localStorage) =====
-    (function(){
-      const root = document.documentElement;
-      const toggle = document.getElementById('themeToggle');
-      const stored = localStorage.getItem('theme');
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (stored) { root.setAttribute('data-theme', stored); }
-      else if (systemPrefersDark) { root.setAttribute('data-theme', 'dark'); }
-      toggle?.addEventListener('click', () => {
-        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-      });
-    })();
-
-    // ===== Mobile Menu Toggle =====
-    (function(){
-      const nav = document.getElementById('nav');
-      const menuBtn = document.getElementById('menuToggle');
-      const links = nav.querySelectorAll('.links a');
-      menuBtn?.addEventListener('click', () => nav.classList.toggle('open'));
-      links.forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
-    })();
-
-    // ===== Dynamic Year =====
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
-  <!--
-  ===================== Quick Guide =====================
-  1) Put this file as `index.html` in the root of your GitHub repo.
-  2) Create folders: `/assets/images/` and `/assets/` for images & PDFs.
-  3) Replace placeholder links (GitHub, LinkedIn, email) and text.
-  4) Add project images where indicated. Keep 16:9 ratio for best results.
-  5) Enable GitHub Pages: Settings → Pages → Deploy from Branch → main / root.
-  6) Optional: Add a CNAME file in the repo root if you have a custom domain.
-  7) To add more sections/cards, copy an <article class="card project-card"> block.
-  =======================================================
-  -->
 </body>
 </html>
