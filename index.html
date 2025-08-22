@@ -961,6 +961,27 @@ interpersonal strengths to any future roles.</p>
                 document.querySelector('header').style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             }
         });
+
+            // Email form handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // Encode the email content
+        const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
+        const encodedSubject = encodeURIComponent(subject);
+        const encodedBody = encodeURIComponent(body);
+        
+        // Open default email client
+        window.location.href = `mailto:pllkas005@myuct.ac.za?subject=${encodedSubject}&body=${encodedBody}`;
+        
+        // Optional: Clear the form after submission
+        this.reset();
+});
     </script>
 </body>
 </html>
